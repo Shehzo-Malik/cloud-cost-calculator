@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cloud Cost Calculator - Shehzal Malik</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+
+    <div class="calculator-container">
+        <!-- Header -->
+        <header>
+            <div class="title-area">
+                <i class="fa-solid fa-calculator"></i>
+                <div>
+                    <h1>Multi-Cloud Cost Estimator</h1>
+                    <p>Interactive Cloud Pricing & Resource Calculator | By Shehzal Malik</p>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Grid -->
+        <div class="calc-grid">
+            <!-- Left: Inputs Configuration -->
+            <div class="card config-card">
+                <h2><i class="fa-solid fa-sliders"></i> Resource Parameters</h2>
+
+                <div class="input-group">
+                    <label>Cloud Provider</label>
+                    <select id="cloud-provider">
+                        <option value="aws">Amazon Web Services (AWS)</option>
+                        <option value="gcp">Google Cloud Platform (GCP)</option>
+                        <option value="azure">Microsoft Azure</option>
+                    </select>
+                </div>
+
+                <div class="input-group">
+                    <label>Compute Instances (vCPUs)</label>
+                    <input type="range" id="vcpu-range" min="1" max="32" value="4">
+                    <span class="range-value"><strong id="vcpu-val">4</strong> vCPUs</span>
+                </div>
+
+                <div class="input-group">
+                    <label>RAM (GB)</label>
+                    <input type="range" id="ram-range" min="2" max="128" step="2" value="16">
+                    <span class="range-value"><strong id="ram-val">16</strong> GB RAM</span>
+                </div>
+
+                <div class="input-group">
+                    <label>Storage (SSD / S3 in GB)</label>
+                    <input type="range" id="storage-range" min="10" max="2000" step="10" value="100">
+                    <span class="range-value"><strong id="storage-val">100</strong> GB</span>
+                </div>
+
+                <div class="input-group">
+                    <label>Data Transfer / Outbound (GB/mo)</label>
+                    <input type="range" id="transfer-range" min="0" max="1000" step="50" value="200">
+                    <span class="range-value"><strong id="transfer-val">200</strong> GB</span>
+                </div>
+            </div>
+
+            <!-- Right: Cost Summary & Breakdown -->
+            <div class="card summary-card">
+                <h2><i class="fa-solid fa-file-invoice-dollar"></i> Cost Estimate Summary</h2>
+                
+                <div class="summary-box">
+                    <div class="summary-item">
+                        <span>Compute Cost:</span>
+                        <span id="compute-cost">$0.00</span>
+                    </div>
+                    <div class="summary-item">
+                        <span>Storage Cost:</span>
+                        <span id="storage-cost">$0.00</span>
+                    </div>
+                    <div class="summary-item">
+                        <span>Network Transfer:</span>
+                        <span id="transfer-cost">$0.00</span>
+                    </div>
+                    <div class="divider"></div>
+                    <div class="summary-item total">
+                        <span>Estimated Monthly Total:</span>
+                        <span id="monthly-total">$0.00</span>
+                    </div>
+                    <div class="summary-item yearly">
+                        <span>Estimated Annual Total:</span>
+                        <span id="yearly-total">$0.00</span>
+                    </div>
+                </div>
+
+                <button id="export-btn"><i class="fa-solid fa-download"></i> Export Estimation Report</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
